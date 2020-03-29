@@ -9,7 +9,7 @@ class MathTest{
     fun  main(){
         var i = 1
         i += 1
-        val a = 1 + i
+        val a = 1 + i + 1
         assertEquals(2,i)
         println("$i $a")
     }
