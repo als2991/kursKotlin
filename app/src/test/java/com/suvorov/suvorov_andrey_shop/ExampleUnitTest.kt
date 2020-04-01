@@ -2,8 +2,6 @@ package com.suvorov.suvorov_andrey_shop
 
 import org.junit.Test
 
-import org.junit.Assert.*
-
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
@@ -20,7 +18,7 @@ fun editFormatPrice(price:Double):String{
     }
 }
 
-fun formatPrice(price: Double, measure: String = "шт", discInProc: Int = 0): String{
+fun calcDiscountPrice(price: Double, measure: String = "шт", discInProc: Int = 0): String{
     when{
         discInProc != 0 -> {
             val newPrice: Double = price - (price * discInProc / 100)
@@ -37,9 +35,11 @@ fun formatPrice(price: Double, measure: String = "шт", discInProc: Int = 0): S
 class ExampleUnitTest {
     @Test
     fun main() {
-        println(message = formatPrice(price = 99.03721, discInProc = 10))
-        println(message = formatPrice(price = 99.34578, measure = "кг", discInProc = 10))
-        println(message = formatPrice(price = 100.0))
-        println(message = formatPrice(price = 100.111111))
+        println(message = calcDiscountPrice(price = 99.03721, discInProc = 10))
+        println(message = calcDiscountPrice(price = 99.34578, measure = "кг", discInProc = 10))
+        println(message = calcDiscountPrice(price = 100.0))
+        println(message = calcDiscountPrice(price = 100.111111))
+
+
     }
 }
