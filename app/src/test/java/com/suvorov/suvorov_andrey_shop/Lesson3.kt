@@ -7,12 +7,17 @@ class Lesson3 {
     @Test
     fun example() {
 
-        val iphoneCase = Product(price = 123.5, salePercent = 30)
+        val casePricePrinter: PricePrinter = CasePricePrinter()
+        val telephonePricePrinter: PricePrinter = TelephonePricePrinter()
 
-        val pricePrinter: PricePrinter = ProductPricePrinter()
+        val iphoneCase = Product(price = 123.5, salePercent = 30)
+        val iphoneTelephone = Product(price = 50000.0, salePercent = 5)
 
         val discountIphoneCasePrice = iphoneCase.calcDiscountPrice()
-        pricePrinter.print(discountIphoneCasePrice)
+        val discountIphoneTelephonePrice = iphoneTelephone.calcDiscountPrice()
+
+        casePricePrinter.print(discountIphoneCasePrice)
+        telephonePricePrinter.print(discountIphoneTelephonePrice)
     }
 }
 
@@ -42,15 +47,29 @@ interface PricePrinter {
     fun print(price: Double)
 }
 
-class ProductPricePrinter: PricePrinter {
+class CasePricePrinter: PricePrinter {
     override fun print(price: Double) {
         when {
             price % 1.0 != 0.0 -> {
-                println(Math.rint(100.0 * price) / 100.0)
+                println("Case price ${Math.rint(100.0 * price) / 100.0}")
             }
             else -> {
-                println(Math.round(price))
+                println("Case price: ${Math.round(price)}")
             }
         }
     }
+}
+
+class TelephonePricePrinter:PricePrinter {
+    override fun print(price: Double) {
+        when {
+            price % 1.0 != 0.0 -> {
+                println("Telephone price: ${Math.rint(100.0 * price) / 100.0}")
+            }
+            else -> {
+                println("Telephone price: ${Math.round(price)}")
+            }
+        }
+    }
+
 }
