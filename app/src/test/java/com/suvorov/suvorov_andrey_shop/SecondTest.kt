@@ -71,7 +71,7 @@ class SecondTest{
 
     class CleanKotlinPriceFormatter : PriceFormatter{
         override fun format(price: Double): String {
-            return <....>
+            return ""
 
         }
 
