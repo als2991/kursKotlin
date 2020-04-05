@@ -45,6 +45,7 @@ interface PricePrinter {
      * If price have fractional part than it will be rounded for 2 symbols after "."
      */
     fun print(price: Double)
+
 }
 
 class CasePricePrinter: PricePrinter {
