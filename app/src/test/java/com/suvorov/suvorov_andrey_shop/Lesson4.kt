@@ -21,7 +21,7 @@ class Lesson4 {
 //
 //
 //        MyforEach(discountPrices){discountPrice ->
-//            casePricePrinter.print(discountPrice)
+//            casePricePrinter.printPrice(discountPrice)
 //        }
 //    }
 
@@ -56,11 +56,11 @@ class Lesson4 {
 //     * If price have not fractional part than it will be printed as integer
 //     * If price have fractional part than it will be rounded for 2 symbols after "."
 //     */
-//    fun print(price: Double)
+//    fun printPrice(price: Double)
 //}
 //
 //class CasePricePrinter2: PricePrinter {
-//    override fun print(price: Double) {
+//    override fun printPrice(price: Double) {
 //        when {
 //            price % 1.0 != 0.0 -> {
 //                println("Case price ${Math.rint(100.0 * price) / 100.0}")
@@ -73,7 +73,7 @@ class Lesson4 {
 //}
 //
 //class TelephonePricePrinter2:PricePrinter {
-//    override fun print(price: Double) {
+//    override fun printPrice(price: Double) {
 //        when {
 //            price % 1.0 != 0.0 -> {
 //                println("Telephone price: ${Math.rint(100.0 * price) / 100.0}")
