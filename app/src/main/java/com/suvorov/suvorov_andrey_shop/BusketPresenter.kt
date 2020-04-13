@@ -9,28 +9,43 @@ class BusketPresenter(
     private val lgQ6Case = Product(price = 99.99, salePercent = 10, productName = "Case for LG Q6")
     private val products = listOf(iphoneXCase,samsungGalS9Case,lgQ6Case)
 
-    val basket = Basket(products)
 
-    fun pricePrint(){
-        val allPrice = products.sumByDouble { it.calcDiscountPrice() }
-        viewProduct.printPriceProduct(allPrice)
+    fun calcAmountPrice():Double{
+        val amountPrice = products.sumByDouble { it.getPrice() }
+        return amountPrice
     }
 
-    fun productNamePrint(){
-        products.forEach{product ->
-            viewProduct.printNameProduct(product.getProductName())
-        }
+    fun calcAmountDiscount(): Double{
+        val amountDiscount = products.sumByDouble { it.calcDiscount() }
+        return amountDiscount
     }
 
-    fun basketPrint(){
-        val productsBasket = basket.GetProducts()
-        productsBasket.forEach { product ->
-            val nameProduct = product.getProductName()
-            val discountPriceProduct = product.calcDiscountPrice()
-            viewBasket.printProductsBasket("$nameProduct: $discountPriceProduct")
-        }
-        viewBasket.printAmountBasket(basket.calcAmountPrice())
+    fun calcAmountDiscountPrice(): Double {
+        val amountDiscountPrice = products.sumByDouble { it.calcDiscountPrice() }
+        return amountDiscountPrice
     }
+
+
+//    fun pricePrint(){
+//        val allPrice = basket.calcAmountDiscountPrice()
+//        viewProduct.printPriceProduct(allPrice)
+//    }
+//
+//    fun productNamePrint(){
+//        products.forEach{product ->
+//            viewProduct.printNameProduct(product.getProductName())
+//        }
+//    }
+//
+//    fun basketPrint(){
+//        val productsBasket = basket.GetProducts()
+//        productsBasket.forEach { product ->
+//            val nameProduct = product.getProductName()
+//            val discountPriceProduct = product.calcDiscountPrice()
+//            viewBasket.printProductsBasket("$nameProduct: $discountPriceProduct")
+//        }
+//        viewBasket.printAmountBasket(basket.calcAmountDiscountPrice())
+//    }
 }
 
 

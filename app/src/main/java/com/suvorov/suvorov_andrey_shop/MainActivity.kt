@@ -3,7 +3,6 @@ package com.suvorov.suvorov_andrey_shop
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -14,12 +13,17 @@ class MainActivity : AppCompatActivity(), ProductsView, BasketView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        checkoutSumValue.text = "10000 р"
+
+        checkOutSumValue.text = presenter.calcAmountPrice().toString()
+        checkOutSale.text = presenter.calcAmountDiscount().toString()
+        checkOutTotalPriceWithSale.text = presenter.calcAmountDiscountPrice().toString()
+
+
         checkoutPay.setOnClickListener{
-            Toast.makeText(this, "test", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, checkOutTotalPriceWithSale.text, Toast.LENGTH_LONG).show()
         }
 
-        presenter.basketPrint()
+
     }
 
     override fun printPriceProduct(price: Double) {
@@ -39,7 +43,6 @@ class MainActivity : AppCompatActivity(), ProductsView, BasketView {
     override fun printProductsBasket(ProductsBasket: String) {
         Log.d("PrintBasket","$ProductsBasket")
     }
-
 
 
 
