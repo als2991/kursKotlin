@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity(), ProductsView, BasketView {
         checkOutSale.text = presenter.calcAmountDiscount().toString()
         checkOutTotalPriceWithSale.text = presenter.calcAmountDiscountPrice().toString()
 
-
         checkoutPay.setOnClickListener{
             Toast.makeText(this, checkOutTotalPriceWithSale.text, Toast.LENGTH_LONG).show()
         }
