@@ -3,7 +3,9 @@ package com.suvorov.suvorov_andrey_shop
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), ProductsView, BasketView {
 
@@ -12,6 +14,10 @@ class MainActivity : AppCompatActivity(), ProductsView, BasketView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        checkoutSumValue.text = "10000 р"
+        checkoutPay.setOnClickListener{
+            Toast.makeText(this, "test", Toast.LENGTH_LONG).show()
+        }
 
         presenter.basketPrint()
     }
