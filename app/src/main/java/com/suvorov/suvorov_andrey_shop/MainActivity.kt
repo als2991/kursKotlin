@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.reflect.Field
 
 class MainActivity : AppCompatActivity(), ProductsView {
 
@@ -18,9 +18,9 @@ class MainActivity : AppCompatActivity(), ProductsView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val editList = listOf<EditText>(checkOutSurname, checkOutName,checkOutMiddleName)
-
         presenter.attachView(this)
+
+        val editList = listOf<EditText>(checkOutSurname, checkOutName,checkOutMiddleName)
         setListeners(editList)
 
         //checkOutSumValue.text = presenter.calcAmountPrice().toString()
@@ -32,26 +32,20 @@ class MainActivity : AppCompatActivity(), ProductsView {
         //}
     }
 
-
       private fun setListeners(editors: List<EditText>) {
           editors.forEach {
-              it.addTextChangedListener(object : TextWatcher {
+              val editType: FieldType = when(it.id){
+                  R.id.checkOutSurname -> FieldType.SURNAME
+                  R.id.checkOutName -> FieldType.NAME
+                  R.id.checkOutMiddleName -> FieldType.MIDDLE_NAME
+                  else -> FieldType.NONE
+              }
+              it.addTextChangedListener(object : SimpleTextWatcher() {
 
-                  override fun afterTextChanged(s: Editable?) = presenter.checkEditText(it)
-
-                  override fun beforeTextChanged(
-                      s: CharSequence?,
-                      start: Int,
-                      count: Int,
-                      after: Int
-                  ) {}
-
-                  override fun onTextChanged(
-                      s: CharSequence?,
-                      start: Int,
-                      before: Int,
-                      count: Int
-                  ) {}
+                  override fun afterTextChanged(s: Editable?) {
+                      super.afterTextChanged(s)
+                      presenter.checkEditText(it.text.toString(),editType)
+                  }
               })
           }
       }
@@ -74,7 +68,13 @@ class MainActivity : AppCompatActivity(), ProductsView {
         Log.d("PrintProduct","$name")
     }
 
-    override fun showErrorForEditText(visible: Boolean, edit: EditText) = edit.showError(visible)
+    override fun showErrorForEditText(visible: Boolean, fieldType: FieldType){
+      when (fieldType){
+          FieldType.SURNAME -> checkOutSurname.showError(visible)
+          FieldType.NAME -> checkOutName.showError(visible)
+          FieldType.MIDDLE_NAME -> checkOutMiddleName.showError(visible)
+      }
+    }
 
 
 

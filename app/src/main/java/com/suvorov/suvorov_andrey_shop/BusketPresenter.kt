@@ -13,14 +13,20 @@ class BusketPresenter: MvpPresenter<ProductsView>() {
 
     private fun checkSymbols(text: String):Boolean = text.length < 3
 
-    fun getIdNameforEditText(edit:EditText): String{
-        return edit.transitionName
+    fun checkEditText(
+        text: String,
+        fieldType: FieldType
+    ){
+        when(fieldType){
+            FieldType.SURNAME -> model.surname
+            FieldType.NAME -> model.mame
+            FieldType.MIDDLE_NAME -> model.middleName
+        }
+        viewState.showErrorForEditText(checkSymbols(text), fieldType)
     }
 
-    fun checkEditText(edit: EditText){
-        if(checkSymbols(edit.text.toString())) model. = edit.text.toString()
-        viewState.showErrorForEditText(checkSymbols(edit.text.toString()), edit)
-    }
+
+
 
 
     fun calcAmountPrice():Double{
@@ -38,7 +44,6 @@ class BusketPresenter: MvpPresenter<ProductsView>() {
         return amountDiscountPrice
     }
 
-
     fun pricePrint(){
         val allPrice = calcAmountDiscountPrice()
         viewState.printPriceProduct(allPrice)
@@ -50,6 +55,10 @@ class BusketPresenter: MvpPresenter<ProductsView>() {
         }
     }
 
+}
+
+enum class FieldType {
+    SURNAME,NAME, MIDDLE_NAME, NONE
 }
 
 

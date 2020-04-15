@@ -19,5 +19,5 @@ interface ProductsView:MvpView{
     fun printNameProduct(name: String)
 
     @StateStrategyType(AddToEndSingleStrategy::class)
-    fun showErrorForEditText(visible: Boolean, edit: EditText)
+    fun showErrorForEditText(visible: Boolean, fieldType: FieldType)
 }
