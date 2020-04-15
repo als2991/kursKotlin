@@ -1,5 +1,6 @@
 package com.suvorov.suvorov_andrey_shop
 
+import android.widget.EditText
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
@@ -16,4 +17,7 @@ interface ProductsView:MvpView{
 
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun printNameProduct(name: String)
+
+    @StateStrategyType(AddToEndSingleStrategy::class)
+    fun showErrorForEditText(visible: Boolean, edit: EditText)
 }

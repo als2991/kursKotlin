@@ -5,7 +5,7 @@ data class CreateOrderModel(
     /*
     ** Модель для создания заказа
      */
-    var surname: String = "",
-    var name: String = "",
-    var moddleName: String =""
+    var checkOutSurname: String = "",
+    var checkOutName: String = "",
+    var checkOutModdleName: String =""
 )

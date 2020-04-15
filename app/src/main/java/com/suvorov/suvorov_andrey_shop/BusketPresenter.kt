@@ -1,5 +1,6 @@
 package com.suvorov.suvorov_andrey_shop
 
+import android.widget.EditText
 import moxy.MvpPresenter
 
 class BusketPresenter: MvpPresenter<ProductsView>() {
@@ -9,6 +10,17 @@ class BusketPresenter: MvpPresenter<ProductsView>() {
     private val products = listOf(iphoneXCase,samsungGalS9Case,lgQ6Case)
 
     private val model = CreateOrderModel()
+
+    private fun checkSymbols(text: String):Boolean = text.length < 3
+
+    fun getIdNameforEditText(edit:EditText): String{
+        return edit.transitionName
+    }
+
+    fun checkEditText(edit: EditText){
+        if(checkSymbols(edit.text.toString())) model. = edit.text.toString()
+        viewState.showErrorForEditText(checkSymbols(edit.text.toString()), edit)
+    }
 
 
     fun calcAmountPrice():Double{
