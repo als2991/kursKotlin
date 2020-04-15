@@ -1,13 +1,14 @@
 package com.suvorov.suvorov_andrey_shop
 
-class BusketPresenter(
-    private val viewProduct: ProductsView,
-    private val viewBasket: BasketView
-) {
+import moxy.MvpPresenter
+
+class BusketPresenter: MvpPresenter<ProductsView>() {
     private val iphoneXCase = Product(price = 123.5, salePercent = 29, productName = "Case for Iphone X")
     private val samsungGalS9Case = Product(price = 100.0, salePercent = 10, productName = "Case for Samsung Galaxy S9")
     private val lgQ6Case = Product(price = 99.99, salePercent = 10, productName = "Case for LG Q6")
     private val products = listOf(iphoneXCase,samsungGalS9Case,lgQ6Case)
+
+    private val model = CreateOrderModel()
 
 
     fun calcAmountPrice():Double{
@@ -26,26 +27,17 @@ class BusketPresenter(
     }
 
 
-//    fun pricePrint(){
-//        val allPrice = basket.calcAmountDiscountPrice()
-//        viewProduct.printPriceProduct(allPrice)
-//    }
-//
-//    fun productNamePrint(){
-//        products.forEach{product ->
-//            viewProduct.printNameProduct(product.getProductName())
-//        }
-//    }
-//
-//    fun basketPrint(){
-//        val productsBasket = basket.GetProducts()
-//        productsBasket.forEach { product ->
-//            val nameProduct = product.getProductName()
-//            val discountPriceProduct = product.calcDiscountPrice()
-//            viewBasket.printProductsBasket("$nameProduct: $discountPriceProduct")
-//        }
-//        viewBasket.printAmountBasket(basket.calcAmountDiscountPrice())
-//    }
+    fun pricePrint(){
+        val allPrice = calcAmountDiscountPrice()
+        viewState.printPriceProduct(allPrice)
+    }
+
+    fun productNamePrint(){
+        products.forEach{product ->
+            viewState.printNameProduct(product.getProductName())
+        }
+    }
+
 }
 
 
