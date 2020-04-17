@@ -13,6 +13,14 @@ class BusketPresenter: MvpPresenter<ProductsView>() {
 
     private fun checkSymbols(text: String):Boolean = text.length < 3
 
+    private fun checkPhone(text: String):Boolean {
+        if(text == "") return true
+
+        val firstChar = text.substring(0,1)
+        if (firstChar == "+" && text.length == 12) return false
+        return !(firstChar == "8" && text.length == 11)
+    }
+
     fun checkEditText(
         text: String,
         fieldType: FieldType
@@ -21,8 +29,10 @@ class BusketPresenter: MvpPresenter<ProductsView>() {
             FieldType.SURNAME -> model.surname
             FieldType.NAME -> model.mame
             FieldType.MIDDLE_NAME -> model.middleName
+            FieldType.PHONE -> model.phone
         }
-        viewState.showErrorForEditText(checkSymbols(text), fieldType)
+        if (fieldType == FieldType.PHONE) viewState.showErrorForEditText(checkPhone(text),fieldType)
+        else viewState.showErrorForEditText(checkSymbols(text), fieldType)
     }
 
 
@@ -58,7 +68,7 @@ class BusketPresenter: MvpPresenter<ProductsView>() {
 }
 
 enum class FieldType {
-    SURNAME,NAME, MIDDLE_NAME, NONE
+    SURNAME,NAME, MIDDLE_NAME, PHONE, NONE
 }
 
 

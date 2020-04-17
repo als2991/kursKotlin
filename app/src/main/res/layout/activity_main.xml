@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity"
+        tools:context=".CheckoutActivity"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="0dp">
@@ -13,6 +13,18 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/checkOutHintPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/phone_hint"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkOutPhone" />
 
             <TextView
                 android:id="@+id/checkOutTotalPriceWithSale"
@@ -77,16 +89,16 @@
             </RadioGroup>
 
             <EditText
-                android:id="@+id/checkOutTelephone"
+                android:id="@+id/checkOutPhone"
                 android:layout_width="347dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
+                android:autofillHints="@string/checkout_phone"
                 android:hint="@string/checkout_phone"
                 android:inputType="phone"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:autofillHints = "@string/checkout_phone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -216,6 +228,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkOutTelephone" />
+                app:layout_constraintTop_toBottomOf="@+id/checkOutPhone" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

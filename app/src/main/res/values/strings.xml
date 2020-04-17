@@ -12,4 +12,5 @@
     <string name="checkout_productsInBasket">Товаров в корзине на сумму:</string>
     <string name="checkout_totalPriceWithSale">Сумма к оплате:</string>
     <string name="checkout_sale">Скидка составила:</string>
+    <string name="phone_hint">Пример, 89999999999 или +79999999999</string>
 </resources>

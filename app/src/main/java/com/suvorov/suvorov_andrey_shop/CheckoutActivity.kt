@@ -1,18 +1,18 @@
 package com.suvorov.suvorov_andrey_shop
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
+import com.suvorov.suvorov_andrey_shop.CatalogActivity.Companion.PRODUCT_ID
 import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.reflect.Field
 
-class MainActivity : AppCompatActivity(), ProductsView {
+
+class CheckoutActivity : BaseActivity(), ProductsView {
 
     private val presenter = BusketPresenter()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +20,9 @@ class MainActivity : AppCompatActivity(), ProductsView {
 
         presenter.attachView(this)
 
-        val editList = listOf<EditText>(checkOutSurname, checkOutName,checkOutMiddleName)
+        val productId = intent.extras?.getInt(PRODUCT_ID,-1)
+
+        val editList = listOf<EditText>(checkOutSurname, checkOutName,checkOutMiddleName,checkOutPhone)
         setListeners(editList)
 
         //checkOutSumValue.text = presenter.calcAmountPrice().toString()
@@ -38,6 +40,7 @@ class MainActivity : AppCompatActivity(), ProductsView {
                   R.id.checkOutSurname -> FieldType.SURNAME
                   R.id.checkOutName -> FieldType.NAME
                   R.id.checkOutMiddleName -> FieldType.MIDDLE_NAME
+                  R.id.checkOutPhone -> FieldType.PHONE
                   else -> FieldType.NONE
               }
               it.addTextChangedListener(object : SimpleTextWatcher() {
@@ -73,6 +76,7 @@ class MainActivity : AppCompatActivity(), ProductsView {
           FieldType.SURNAME -> checkOutSurname.showError(visible)
           FieldType.NAME -> checkOutName.showError(visible)
           FieldType.MIDDLE_NAME -> checkOutMiddleName.showError(visible)
+          FieldType.PHONE -> checkOutPhone.showError(visible)
       }
     }
 

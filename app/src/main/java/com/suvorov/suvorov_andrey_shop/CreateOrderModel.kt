@@ -7,5 +7,6 @@ data class CreateOrderModel(
      */
     var surname: String = "",
     var mame: String = "",
-    var middleName: String =""
+    var middleName: String = "",
+    var phone: String = ""
 )
