@@ -1,29 +1,47 @@
-package com.suvorov.suvorov_andrey_shop
+package com.suvorov.suvorov_andrey_shop.checkout
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
-import com.suvorov.suvorov_andrey_shop.CatalogActivity.Companion.PRODUCT_ID
-import kotlinx.android.synthetic.main.activity_main.*
+import com.suvorov.suvorov_andrey_shop.*
+import com.suvorov.suvorov_andrey_shop.catalog.CatalogActivity.Companion.IS_USER_AUTH
+import com.suvorov.suvorov_andrey_shop.catalog.CatalogActivity.Companion.PRODUCT_ID
+import com.suvorov.suvorov_andrey_shop.catalog.CatalogActivity.Companion.REQUEST_AUTH
+import kotlinx.android.synthetic.main.checkout_activity.*
 
 
 class CheckoutActivity : BaseActivity(), ProductsView {
 
     private val presenter = BusketPresenter()
+    private var isAuth: Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.checkout_activity)
 
         presenter.attachView(this)
+        val productID = intent.extras?.getInt(PRODUCT_ID,-1)
+        Log.d(tag,productID.toString())
 
-        val productId = intent.extras?.getInt(PRODUCT_ID,-1)
 
         val editList = listOf<EditText>(checkOutSurname, checkOutName,checkOutMiddleName,checkOutPhone)
         setListeners(editList)
+
+        checkoutPay.setOnClickListener{
+            isAuth = true
+            setResult(REQUEST_AUTH, Intent().apply {
+                putExtra(IS_USER_AUTH,isAuth)
+            })
+
+        }
+
+        checkOutBackImg.setOnClickListener{
+            finish()
+        }
 
         //checkOutSumValue.text = presenter.calcAmountPrice().toString()
         //checkOutSale.text = presenter.calcAmountDiscount().toString()

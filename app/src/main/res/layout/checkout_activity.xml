@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".CheckoutActivity"
+        tools:context=".checkout.CheckoutActivity"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="0dp">
@@ -14,17 +14,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/checkOutBackImg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_arrow_back"/>
+
             <TextView
                 android:id="@+id/checkOutHintPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="4dp"
-                android:text="@string/phone_hint"
+                android:text="@string/checkout_phone_hint"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkOutPhone" />
+                app:layout_constraintTop_toBottomOf="@+id/checkOutPhone"/>
 
             <TextView
                 android:id="@+id/checkOutTotalPriceWithSale"
@@ -35,7 +43,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/checkOutTextTotalPriceWithSale"
                 app:layout_constraintStart_toStartOf="@+id/checkOutSale"
                 app:layout_constraintTop_toTopOf="@+id/checkOutTextTotalPriceWithSale"
-                tools:text="800 р" />
+                tools:text="800р"/>
 
             <TextView
                 android:id="@+id/checkOutTextTotalPriceWithSale"
@@ -48,7 +56,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/checkOutTextProductsInBasket"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/checkOutTextProductsInBasket"
-                app:layout_constraintTop_toBottomOf="@+id/checkOutTextSale" />
+                app:layout_constraintTop_toBottomOf="@+id/checkOutTextSale"/>
 
             <TextView
                 android:id="@+id/checkOutTextSale"
@@ -61,7 +69,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/checkOutTextProductsInBasket"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/checkOutTextProductsInBasket"
-                app:layout_constraintTop_toBottomOf="@+id/checkOutTextProductsInBasket" />
+                app:layout_constraintTop_toBottomOf="@+id/checkOutTextProductsInBasket"/>
 
             <RadioGroup
                 android:id="@+id/radioGroup"
@@ -78,13 +86,13 @@
                     android:id="@+id/checkOutCard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/checkout_card" />
+                    android:text="@string/checkout_card"/>
 
                 <RadioButton
                     android:id="@+id/checkOutCash"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/checkout_cash" />
+                    android:text="@string/checkout_cash"/>
 
             </RadioGroup>
 
@@ -102,7 +110,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkOutMiddleName" />
+                app:layout_constraintTop_toBottomOf="@+id/checkOutMiddleName"/>
 
             <Button
                 android:id="@+id/checkoutPay"
@@ -115,7 +123,7 @@
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup"/>
 
             <EditText
                 android:id="@+id/checkOutSurname"
@@ -131,7 +139,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkoutHeader" />
+                app:layout_constraintTop_toBottomOf="@+id/checkoutHeader"/>
 
             <TextView
                 android:id="@+id/checkOutSumValue"
@@ -143,7 +151,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/checkOutTextProductsInBasket"
                 app:layout_constraintStart_toEndOf="@+id/checkOutTextProductsInBasket"
                 app:layout_constraintTop_toTopOf="@+id/checkOutTextProductsInBasket"
-                tools:text="1000 Р" />
+                tools:text="1000 Р"/>
 
             <EditText
                 android:id="@+id/checkOutMiddleName"
@@ -159,7 +167,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkOutName" />
+                app:layout_constraintTop_toBottomOf="@+id/checkOutName"/>
 
             <TextView
                 android:id="@+id/checkOutSelectBuy"
@@ -173,7 +181,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkOutTextTotalPriceWithSale" />
+                app:layout_constraintTop_toBottomOf="@+id/checkOutTextTotalPriceWithSale"/>
 
             <EditText
                 android:id="@+id/checkOutName"
@@ -189,7 +197,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkOutSurname" />
+                app:layout_constraintTop_toBottomOf="@+id/checkOutSurname"/>
 
             <TextView
                 android:id="@+id/checkOutSale"
@@ -200,7 +208,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/checkOutTextSale"
                 app:layout_constraintStart_toStartOf="@+id/checkOutSumValue"
                 app:layout_constraintTop_toTopOf="@+id/checkOutTextSale"
-                tools:text="200 р" />
+                tools:text="200 р"/>
 
             <TextView
                 android:id="@+id/checkoutHeader"
@@ -214,7 +222,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
                 android:id="@+id/checkOutTextProductsInBasket"
@@ -228,6 +236,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkOutPhone" />
+                app:layout_constraintTop_toBottomOf="@+id/checkOutPhone"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

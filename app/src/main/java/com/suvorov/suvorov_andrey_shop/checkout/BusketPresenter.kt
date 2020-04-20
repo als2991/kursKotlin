@@ -1,12 +1,23 @@
-package com.suvorov.suvorov_andrey_shop
+package com.suvorov.suvorov_andrey_shop.checkout
 
-import android.widget.EditText
 import moxy.MvpPresenter
 
 class BusketPresenter: MvpPresenter<ProductsView>() {
-    private val iphoneXCase = Product(price = 123.5, salePercent = 29, productName = "Case for Iphone X")
-    private val samsungGalS9Case = Product(price = 100.0, salePercent = 10, productName = "Case for Samsung Galaxy S9")
-    private val lgQ6Case = Product(price = 99.99, salePercent = 10, productName = "Case for LG Q6")
+    private val iphoneXCase = Product(
+        price = 123.5,
+        salePercent = 29,
+        productName = "Case for Iphone X"
+    )
+    private val samsungGalS9Case = Product(
+        price = 100.0,
+        salePercent = 10,
+        productName = "Case for Samsung Galaxy S9"
+    )
+    private val lgQ6Case = Product(
+        price = 99.99,
+        salePercent = 10,
+        productName = "Case for LG Q6"
+    )
     private val products = listOf(iphoneXCase,samsungGalS9Case,lgQ6Case)
 
     private val model = CreateOrderModel()
@@ -16,9 +27,9 @@ class BusketPresenter: MvpPresenter<ProductsView>() {
     private fun checkPhone(text: String):Boolean {
         if(text == "") return true
 
-        val firstChar = text.substring(0,1)
-        if (firstChar == "+" && text.length == 12) return false
-        return !(firstChar == "8" && text.length == 11)
+        val firstChars = text.substring(0,2)
+        if (firstChars == "+7" && text.length == 12) return false
+        return !(firstChars.substring(0,1) == "8" && text.length == 11)
     }
 
     fun checkEditText(

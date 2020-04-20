@@ -1,6 +1,5 @@
-package com.suvorov.suvorov_andrey_shop
+package com.suvorov.suvorov_andrey_shop.checkout
 
-import android.widget.EditText
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType

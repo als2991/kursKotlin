@@ -7,17 +7,19 @@ class Lesson3 {
     @Test
     fun example() {
 
-        val casePricePrinter: PricePrinter = CasePricePrinter()
-        val telephonePricePrinter: PricePrinter = TelephonePricePrinter()
-
-        val iphoneCase = Product(price = 123.5, salePercent = 30)
-        val iphoneTelephone = Product(price = 50000.0, salePercent = 5)
-
-        val discountIphoneCasePrice = iphoneCase.calcDiscountPrice()
-        val discountIphoneTelephonePrice = iphoneTelephone.calcDiscountPrice()
-
-        casePricePrinter.print(discountIphoneCasePrice)
-        telephonePricePrinter.print(discountIphoneTelephonePrice)
+//        val casePricePrinter: PricePrinter = CasePricePrinter()
+//        val telephonePricePrinter: PricePrinter = TelephonePricePrinter()
+//
+//        val iphoneCase =
+//            com.suvorov.suvorov_andrey_shop.checkout.Product(price = 123.5, salePercent = 30,)
+//        val iphoneTelephone =
+//            com.suvorov.suvorov_andrey_shop.checkout.Product(price = 50000.0, salePercent = 5,)
+//
+//        val discountIphoneCasePrice = iphoneCase.calcDiscountPrice()
+//        val discountIphoneTelephonePrice = iphoneTelephone.calcDiscountPrice()
+//
+//        casePricePrinter.print(discountIphoneCasePrice)
+//        telephonePricePrinter.print(discountIphoneTelephonePrice)
     }
 }
 
