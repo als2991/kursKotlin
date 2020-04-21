@@ -18,6 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>/>
         </activity>
+
+        <activity android:name=".basket.BasketActivity"/>
+
+        <activity android:name=".about_product.AboutProductActivity"/>
+
+
     </application>
 
 </manifest>

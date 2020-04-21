@@ -11,11 +11,6 @@ interface ProductsView:MvpView{
      * If price have not fractional part than it will be printed as integer
      * If price have fractional part than it will be rounded for 2 symbols after "."
      */
-    @StateStrategyType(AddToEndSingleStrategy::class)
-    fun printPriceProduct(price: Double)
-
-    @StateStrategyType(AddToEndSingleStrategy::class)
-    fun printNameProduct(name: String)
 
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun showErrorForEditText(visible: Boolean, fieldType: FieldType)

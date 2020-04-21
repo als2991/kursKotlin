@@ -18,4 +18,5 @@
     <string name="basket">Корзина</string>
     <string name="place_order">Оформить заказ</string>
     <string name="add_in_basket">Добавить в корзину</string>
+    <string name="about_product_name">Наименование товара</string>
 </resources>

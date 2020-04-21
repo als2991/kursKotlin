@@ -16,11 +16,11 @@
 
             <ImageView
                 android:id="@+id/checkOutBackImg"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_arrow_back"/>
+                app:srcCompat="@drawable/ic_arrow_back" />
 
             <TextView
                 android:id="@+id/checkOutHintPhone"

@@ -1,8 +1,9 @@
 package com.suvorov.suvorov_andrey_shop.checkout
 
 import moxy.MvpPresenter
+import java.util.regex.Pattern
 
-class BusketPresenter: MvpPresenter<ProductsView>() {
+class CheckOutPresenter: MvpPresenter<ProductsView>() {
     private val iphoneXCase = Product(
         price = 123.5,
         salePercent = 29,
@@ -25,11 +26,14 @@ class BusketPresenter: MvpPresenter<ProductsView>() {
     private fun checkSymbols(text: String):Boolean = text.length < 3
 
     private fun checkPhone(text: String):Boolean {
-        if(text == "") return true
 
-        val firstChars = text.substring(0,2)
-        if (firstChars == "+7" && text.length == 12) return false
-        return !(firstChars.substring(0,1) == "8" && text.length == 11)
+        //val pattern = Regex("^((8|\\+7)?){10}\$")
+        //val res = pattern.containsMatchIn("text")
+        //return res
+        if(text == "") return true
+        val firstChars = text.substring(0,1)
+        if (firstChars == "+" && text.length == 12) return false
+        return !(firstChars == "8" && text.length == 11)
     }
 
     fun checkEditText(
@@ -63,17 +67,6 @@ class BusketPresenter: MvpPresenter<ProductsView>() {
     fun calcAmountDiscountPrice(): Double {
         val amountDiscountPrice = products.sumByDouble { it.calcDiscountPrice() }
         return amountDiscountPrice
-    }
-
-    fun pricePrint(){
-        val allPrice = calcAmountDiscountPrice()
-        viewState.printPriceProduct(allPrice)
-    }
-
-    fun productNamePrint(){
-        products.forEach{product ->
-            viewState.printNameProduct(product.getProductName())
-        }
     }
 
 }
