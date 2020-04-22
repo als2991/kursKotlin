@@ -4,6 +4,7 @@ import moxy.MvpPresenter
 
 class CatalogPresenter : MvpPresenter<CatalogView>(){
 
+    //изменяемый лист
     private val list = mutableListOf(
         "Телевизоры",
         "Телефоны",

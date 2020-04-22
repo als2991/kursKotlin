@@ -1,46 +1,46 @@
 package com.suvorov.suvorov_andrey_shop.catalog
 
-import android.util.Log
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.suvorov.suvorov_andrey_shop.R
+
 import kotlinx.android.synthetic.main.item_category.view.*
 
 class CategoryAdapter(
     private val onDeleteClick: (string: String) -> Unit
-) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+): RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
-    private var categories: List<String> = listOf()
+    //создает новый объект ViewHolder, когда RecyclerView нуждается в этом (создание строки списка в Layout)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryAdapter.ViewHolder =
+        ViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_category, parent, false)
+        )
 
-    fun setData(categories: List<String>){
+    private var categories : List<String> = listOf()
+
+    fun SetData(categories : List<String>){
         this.categories = categories
         notifyDataSetChanged()
     }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryAdapter.ViewHolder {
-        Log.d("Adapter", "onCreateViewHolder")
-        return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_category, parent, false)
-        )
-    }
-
+    // общее количество элементов списка
     override fun getItemCount(): Int = categories.size
 
+    //принимает объект ViewHolderа и устанавливает необходимые данные для строки в View компоненте(прокидываем данные, которые необходимо отобразить)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Log.d("Adapter", "onBindViewHolder position $position")
         holder.bind(categories[position])
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        fun bind(text: String) {
-            itemView.categoryTv.text = text
+    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        fun bind(text: String){
+            itemView.CategoryTv.text = text
 
             itemView.deleteIv.setOnClickListener {
                 onDeleteClick(text)
             }
         }
+
     }
 }

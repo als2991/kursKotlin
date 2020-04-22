@@ -13,8 +13,8 @@ import kotlinx.android.synthetic.main.catalog_layout.*
 
 class CatalogActivity: BaseActivity(), CatalogView {
 
-    private val presenter = CatalogPresenter()
-    private val adapter = CategoryAdapter { category ->
+      private val presenter = CatalogPresenter()
+      private val adapter = CategoryAdapter { category ->
         presenter.removeItem(category)
     }
 
@@ -35,27 +35,22 @@ class CatalogActivity: BaseActivity(), CatalogView {
             startActivityForResult(intent, REQUEST_AUTH)
         }
 
-        catalogInfoImg.setOnClickListener {
-        val intent = Intent(this, AboutProductActivity::class.java )
-        startActivity(intent)
-        }
 
-        categoryRv.layoutManager = LinearLayoutManager(this)
-        categoryRv.adapter = adapter
+          categoryRv.layoutManager = LinearLayoutManager(this)
+          categoryRv.adapter = adapter
 
-        presenter.attachView(this)
-        presenter.setData()
+          presenter.attachView(this)
+          presenter.setData()
 
     }
 
     override fun setCategories(list: List<String>) {
-        adapter.setData(list)
+       adapter.SetData(list)
     }
 
     override fun removeItem(position: Int) {
         adapter.notifyItemRemoved(position)
     }
-
 
 
     //example how save in Bundle

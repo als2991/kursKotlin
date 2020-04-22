@@ -5,28 +5,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/catalogName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
-        android:text="@string/about_product_name"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/catalogHeader"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/catalogInfoImg"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/catalogName"
-        app:layout_constraintStart_toEndOf="@+id/catalogName"
-        app:layout_constraintTop_toTopOf="@+id/catalogName"
-        app:srcCompat="@drawable/ic_info" />
 
     <ImageView
         android:id="@+id/catalogBasketImg"
