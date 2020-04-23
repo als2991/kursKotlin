@@ -35,7 +35,7 @@ class CategoryAdapter(
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         fun bind(text: String){
-            itemView.CategoryTv.text = text
+            itemView.categoryTv.text = text
 
             itemView.deleteIv.setOnClickListener {
                 onDeleteClick(text)
