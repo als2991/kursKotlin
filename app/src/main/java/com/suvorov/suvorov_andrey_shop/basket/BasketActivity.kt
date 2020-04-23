@@ -2,13 +2,11 @@ package com.suvorov.suvorov_andrey_shop.basket
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.suvorov.suvorov_andrey_shop.BaseActivity
 import com.suvorov.suvorov_andrey_shop.R
 import com.suvorov.suvorov_andrey_shop.catalog.CatalogActivity.Companion.IS_USER_AUTH
 import com.suvorov.suvorov_andrey_shop.catalog.CatalogActivity.Companion.REQUEST_AUTH
-import com.suvorov.suvorov_andrey_shop.checkout.CheckOutPresenter
 import com.suvorov.suvorov_andrey_shop.checkout.CheckoutActivity
 import com.suvorov.suvorov_andrey_shop.checkout.Product
 import kotlinx.android.synthetic.main.basket_activity.*
@@ -18,7 +16,9 @@ class BasketActivity: BaseActivity(), BasketView {
 
     private var isAuth: Boolean = false
     private val presenter = BasketPresenter()
-    private val adapter = ProductAdapter()
+    private val adapter = ProductAdapter{ product ->
+        presenter.removeItem(product)
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +53,6 @@ class BasketActivity: BaseActivity(), BasketView {
     }
 
     override fun removeItem(position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        adapter.notifyItemRemoved(position)
     }
 }

@@ -12,7 +12,9 @@ import kotlinx.android.synthetic.main.item_product.view.*
 //    private val onDeleteClick: (string: String) -> Unit
 //):RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
-class ProductAdapter():RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+class ProductAdapter(
+    private val onDeleteClick: (product: Product) -> Unit
+):RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductAdapter.ViewHolder =
         ViewHolder(
@@ -37,6 +39,8 @@ class ProductAdapter():RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
             itemView.itemNameProduct.text = product.productName
             itemView.itemDiscount.text = product.discount.toString()
             itemView.itemPrice.text = product.calcDiscountPrice().toString()
+
+            itemView.deleteIv.setOnClickListener { onDeleteClick(product) }
             }
         }
 }

@@ -7,15 +7,19 @@ import moxy.MvpPresenter
 
 class BasketPresenter: MvpPresenter<BasketView>() {
 
+
     private val productPresenter = CheckOutPresenter()
 
     fun SetData(){
-        val products = productPresenter.getProductList()
-        viewState.setProducts(products)
+        val productsList = productPresenter.getProductList()
+        viewState.setProducts(productsList)
     }
 
     fun removeItem(product: Product){
-        val position = productPresenter.getProductList().indexOf(product)
+        val productsList = productPresenter.getProductList()
+        val position = productsList.indexOf(product)
+        productsList.remove(product)
+        viewState.removeItem(position)
 
     }
 }

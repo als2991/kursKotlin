@@ -74,7 +74,7 @@ class CheckOutPresenter: MvpPresenter<ProductsView>() {
         discount = 5,
         productName = "Case for LG Xiaomi Mi8"
     )
-    private val products = listOf(iphone11ProCase, iphone11Case,iphoneXSCase,iphoneXCase,
+    private val products = mutableListOf(iphone11ProCase, iphone11Case,iphoneXSCase,iphoneXCase,
         iphone8Case,iphone7Case,iphone6Case,iphone5Case,samsungGalS9Case,lgQ6Case,lgQ5Case,
         XiaomiMi5Case,XiaomiMi5SCase,XiaomiMi8Case)
 

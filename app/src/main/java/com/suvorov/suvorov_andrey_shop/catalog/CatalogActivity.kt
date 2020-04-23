@@ -7,7 +7,6 @@ import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.suvorov.suvorov_andrey_shop.BaseActivity
 import com.suvorov.suvorov_andrey_shop.R
-import com.suvorov.suvorov_andrey_shop.about_product.AboutProductActivity
 import com.suvorov.suvorov_andrey_shop.basket.BasketActivity
 import kotlinx.android.synthetic.main.catalog_layout.*
 
