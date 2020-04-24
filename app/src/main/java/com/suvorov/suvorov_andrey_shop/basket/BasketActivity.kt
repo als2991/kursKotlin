@@ -39,6 +39,8 @@ class BasketActivity: BaseActivity(), BasketView {
             startActivity(intent)
         }
 
+        basketAddImg.setOnClickListener { presenter.addItem(presenter.caseNokia8_1) }
+
         productsRv.layoutManager = LinearLayoutManager(this)
         productsRv.adapter = adapter
 
@@ -54,5 +56,9 @@ class BasketActivity: BaseActivity(), BasketView {
 
     override fun removeItem(position: Int) {
         adapter.notifyItemRemoved(position)
+    }
+
+    override fun addItem(position: Int) {
+        adapter.notifyItemInserted(position)
     }
 }

@@ -50,4 +50,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/basketHeader"/>
 
+    <ImageView
+        android:id="@+id/basketAddImg"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/basketCheckOutBtn"
+        app:layout_constraintBottom_toBottomOf="@id/basketCheckOutBtn"
+        android:layout_marginRight="8dp"/>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

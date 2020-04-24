@@ -10,6 +10,12 @@ class BasketPresenter: MvpPresenter<BasketView>() {
 
     private val productPresenter = CheckOutPresenter()
 
+    val caseNokia8_1 = Product(
+        2290.00,
+        5,
+        "Case for Nokia 8.1"
+    )
+
     fun SetData(){
         val productsList = productPresenter.getProductList()
         viewState.setProducts(productsList)
@@ -20,6 +26,12 @@ class BasketPresenter: MvpPresenter<BasketView>() {
         val position = productsList.indexOf(product)
         productsList.remove(product)
         viewState.removeItem(position)
+    }
 
+    fun addItem(product: Product){
+        val productList = productPresenter.getProductList()
+        productList.add(product)
+        val position = productList.indexOf(product)
+        viewState.addItem(position)
     }
 }
