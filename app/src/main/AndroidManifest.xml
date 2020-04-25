@@ -12,13 +12,15 @@
         <activity android:name=".checkout.CheckoutActivity"></activity>
 
         <activity android:name=".catalog.CatalogActivity">
+
+        </activity>
+
+        <activity android:name=".basket.BasketActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <activity android:name=".basket.BasketActivity"></activity>
 
         <activity android:name=".about_product.AboutProductActivity"></activity>
 

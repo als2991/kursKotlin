@@ -8,10 +8,6 @@ import com.suvorov.suvorov_andrey_shop.R
 import com.suvorov.suvorov_andrey_shop.checkout.Product
 import kotlinx.android.synthetic.main.item_product.view.*
 
-//class ProductAdapter(
-//    private val onDeleteClick: (string: String) -> Unit
-//):RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
-
 class ProductAdapter(
     private val onDeleteClick: (product: Product) -> Unit
 ):RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
@@ -37,8 +33,8 @@ class ProductAdapter(
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         fun bind(product: Product){
             itemView.itemNameProduct.text = product.productName
-            itemView.itemDiscount.text = product.discount.toString()
-            itemView.itemPrice.text = product.calcDiscountPrice().toString()
+            itemView.itemDiscount.text = product.discount.toString() + "%"
+            itemView.itemPrice.text = product.calcDiscountPrice().toString() + " Р"
 
             itemView.deleteIv.setOnClickListener { onDeleteClick(product) }
             }
