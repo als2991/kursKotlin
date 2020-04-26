@@ -1,8 +1,7 @@
-package com.suvorov.suvorov_andrey_shop.about_product
+package com.suvorov.suvorov_andrey_shop.ui
 
 
 import android.os.Bundle
-import com.suvorov.suvorov_andrey_shop.BaseActivity
 import com.suvorov.suvorov_andrey_shop.R
 import kotlinx.android.synthetic.main.about_product_activity.*
 

@@ -9,20 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".checkout.CheckoutActivity"></activity>
+        <activity android:name=".ui.CheckoutActivity"></activity>
 
-        <activity android:name=".catalog.CatalogActivity">
+        <activity android:name=".ui.CatalogActivity">
 
         </activity>
 
-        <activity android:name=".basket.BasketActivity">
+        <activity android:name=".ui.BasketActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".about_product.AboutProductActivity"></activity>
+        <activity android:name=".ui.AboutProductActivity"></activity>
 
 
     </application>

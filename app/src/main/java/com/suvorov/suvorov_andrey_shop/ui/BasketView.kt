@@ -1,11 +1,10 @@
-package com.suvorov.suvorov_andrey_shop.basket
+package com.suvorov.suvorov_andrey_shop.ui
 
-import com.suvorov.suvorov_andrey_shop.checkout.Product
+import com.suvorov.suvorov_andrey_shop.domain.model.Product
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
-@StateStrategyType(AddToEndSingleStrategy::class)
 interface BasketView:MvpView {
 
     @StateStrategyType(AddToEndSingleStrategy::class)

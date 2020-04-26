@@ -1,8 +1,11 @@
-package com.suvorov.suvorov_andrey_shop.checkout
+package com.suvorov.suvorov_andrey_shop.presenter
 
+import com.suvorov.suvorov_andrey_shop.domain.model.CreateOrderModel
+import com.suvorov.suvorov_andrey_shop.domain.model.Product
+import moxy.InjectViewState
 import moxy.MvpPresenter
-import java.util.regex.Pattern
 
+@InjectViewState
 class CheckOutPresenter: MvpPresenter<ProductsView>() {
     private val iphone11ProCase = Product(
         price = 5999.0,

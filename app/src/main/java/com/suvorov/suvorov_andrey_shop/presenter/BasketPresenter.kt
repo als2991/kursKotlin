@@ -1,10 +1,11 @@
-package com.suvorov.suvorov_andrey_shop.basket
+package com.suvorov.suvorov_andrey_shop.presenter
 
-import com.suvorov.suvorov_andrey_shop.checkout.CheckOutPresenter
-import com.suvorov.suvorov_andrey_shop.checkout.Product
+import com.suvorov.suvorov_andrey_shop.domain.model.Product
+import com.suvorov.suvorov_andrey_shop.ui.BasketView
+import moxy.InjectViewState
 import moxy.MvpPresenter
 
-
+@InjectViewState
 class BasketPresenter: MvpPresenter<BasketView>() {
 
 
@@ -15,6 +16,11 @@ class BasketPresenter: MvpPresenter<BasketView>() {
         5,
         "Case for Nokia 8.1"
     )
+
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+        SetData()
+    }
 
     fun SetData(){
         val productsList = productPresenter.getProductList()

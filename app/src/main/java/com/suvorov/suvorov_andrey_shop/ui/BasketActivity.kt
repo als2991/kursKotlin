@@ -1,22 +1,22 @@
-package com.suvorov.suvorov_andrey_shop.basket
+package com.suvorov.suvorov_andrey_shop.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.suvorov.suvorov_andrey_shop.BaseActivity
 import com.suvorov.suvorov_andrey_shop.R
-import com.suvorov.suvorov_andrey_shop.catalog.CatalogActivity.Companion.IS_USER_AUTH
-import com.suvorov.suvorov_andrey_shop.catalog.CatalogActivity.Companion.REQUEST_AUTH
-import com.suvorov.suvorov_andrey_shop.checkout.CheckoutActivity
-import com.suvorov.suvorov_andrey_shop.checkout.Product
+import com.suvorov.suvorov_andrey_shop.ui.CatalogActivity.Companion.IS_USER_AUTH
+import com.suvorov.suvorov_andrey_shop.ui.CatalogActivity.Companion.REQUEST_AUTH
+import com.suvorov.suvorov_andrey_shop.domain.model.Product
+import com.suvorov.suvorov_andrey_shop.presenter.BasketPresenter
 import kotlinx.android.synthetic.main.basket_activity.*
+import moxy.ktx.moxyPresenter
 
 
 class BasketActivity: BaseActivity(), BasketView {
 
     private var isAuth: Boolean = false
-    private val presenter = BasketPresenter()
-    private val adapter = ProductAdapter{ product ->
+    private val presenter by moxyPresenter { BasketPresenter() }
+    private val adapter = ProductAdapter { product ->
         presenter.removeItem(product)
     }
 
@@ -43,10 +43,6 @@ class BasketActivity: BaseActivity(), BasketView {
 
         productsRv.layoutManager = LinearLayoutManager(this)
         productsRv.adapter = adapter
-
-        presenter.attachView(this)
-        presenter.SetData()
-
 
     }
 

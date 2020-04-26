@@ -1,4 +1,4 @@
-package com.suvorov.suvorov_andrey_shop.catalog
+package com.suvorov.suvorov_andrey_shop.ui
 
 
 import android.view.LayoutInflater
@@ -14,7 +14,7 @@ class CategoryAdapter(
 ): RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     //создает новый объект ViewHolder, когда RecyclerView нуждается в этом (создание строки списка в Layout)
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryAdapter.ViewHolder =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_category, parent, false)
         )

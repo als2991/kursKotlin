@@ -11,9 +11,9 @@ class Lesson3 {
 //        val telephonePricePrinter: PricePrinter = TelephonePricePrinter()
 //
 //        val iphoneCase =
-//            com.suvorov.suvorov_andrey_shop.checkout.Product(price = 123.5, salePercent = 30,)
+//            com.suvorov.suvorov_andrey_shop.domain.model.Product(price = 123.5, salePercent = 30,)
 //        val iphoneTelephone =
-//            com.suvorov.suvorov_andrey_shop.checkout.Product(price = 50000.0, salePercent = 5,)
+//            com.suvorov.suvorov_andrey_shop.domain.model.Product(price = 50000.0, salePercent = 5,)
 //
 //        val discountIphoneCasePrice = iphoneCase.calcDiscountPrice()
 //        val discountIphoneTelephonePrice = iphoneTelephone.calcDiscountPrice()

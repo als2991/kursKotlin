@@ -8,7 +8,7 @@ interface ViewedProductDao {
     fun addProduct(productId:Long)
 
     /**
-     * get all vieved product ids
+     * get all viewed product ids
      * might be empty
      */
     fun getAllProducts(): List<Long>

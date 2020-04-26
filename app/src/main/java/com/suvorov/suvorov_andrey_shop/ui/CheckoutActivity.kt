@@ -1,24 +1,26 @@
-package com.suvorov.suvorov_andrey_shop.checkout
+package com.suvorov.suvorov_andrey_shop.ui
 
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
 import android.widget.EditText
 import com.suvorov.suvorov_andrey_shop.*
-import com.suvorov.suvorov_andrey_shop.catalog.CatalogActivity.Companion.PRODUCT_ID
+import com.suvorov.suvorov_andrey_shop.ui.CatalogActivity.Companion.PRODUCT_ID
+import com.suvorov.suvorov_andrey_shop.presenter.CheckOutPresenter
+import com.suvorov.suvorov_andrey_shop.presenter.FieldType
+import com.suvorov.suvorov_andrey_shop.presenter.ProductsView
 import kotlinx.android.synthetic.main.checkout_activity.*
+import moxy.ktx.moxyPresenter
 
 
 class CheckoutActivity : BaseActivity(), ProductsView {
 
-    private val presenter = CheckOutPresenter()
+    private val presenter by moxyPresenter { CheckOutPresenter()}
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.checkout_activity)
-
-        presenter.attachView(this)
 
         val editList = listOf<EditText>(checkOutSurname, checkOutName,checkOutMiddleName,checkOutPhone)
         setListeners(editList)

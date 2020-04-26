@@ -1,4 +1,4 @@
-package com.suvorov.suvorov_andrey_shop.checkout
+package com.suvorov.suvorov_andrey_shop.domain.model
 
 data class CreateOrderModel(
 

@@ -1,18 +1,18 @@
-package com.suvorov.suvorov_andrey_shop.basket
+package com.suvorov.suvorov_andrey_shop.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.suvorov.suvorov_andrey_shop.R
-import com.suvorov.suvorov_andrey_shop.checkout.Product
+import com.suvorov.suvorov_andrey_shop.domain.model.Product
 import kotlinx.android.synthetic.main.item_product.view.*
 
 class ProductAdapter(
     private val onDeleteClick: (product: Product) -> Unit
 ):RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductAdapter.ViewHolder =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_product,parent,false)
         )
@@ -26,7 +26,7 @@ class ProductAdapter(
 
     override fun getItemCount(): Int = products.size
 
-    override fun onBindViewHolder(holder: ProductAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
        holder.bind(products[position])
     }
 
