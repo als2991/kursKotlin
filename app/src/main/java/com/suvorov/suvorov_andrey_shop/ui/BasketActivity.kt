@@ -8,6 +8,7 @@ import com.suvorov.suvorov_andrey_shop.ui.CatalogActivity.Companion.IS_USER_AUTH
 import com.suvorov.suvorov_andrey_shop.ui.CatalogActivity.Companion.REQUEST_AUTH
 import com.suvorov.suvorov_andrey_shop.domain.model.Product
 import com.suvorov.suvorov_andrey_shop.presenter.BasketPresenter
+import com.suvorov.suvorov_andrey_shop.ui.ProductInfoActivity.Companion.PRODUCT_TAG
 import kotlinx.android.synthetic.main.basket_activity.*
 import moxy.ktx.moxyPresenter
 
@@ -16,8 +17,9 @@ class BasketActivity: BaseActivity(), BasketView {
 
     private var isAuth: Boolean = false
     private val presenter by moxyPresenter { BasketPresenter() }
-    private val adapter = ProductAdapter { product ->
-        presenter.removeItem(product)
+    private val adapter = BasketAdapter { product ->
+        //presenter.removeItem(product)
+        presenter.onProductClick(product)
     }
 
 
@@ -39,7 +41,7 @@ class BasketActivity: BaseActivity(), BasketView {
             startActivity(intent)
         }
 
-        basketAddImg.setOnClickListener { presenter.addItem(presenter.caseNokia8_1) }
+        basketAddImg.setOnClickListener { presenter.addItem() }
 
         productsRv.layoutManager = LinearLayoutManager(this)
         productsRv.adapter = adapter
@@ -56,5 +58,11 @@ class BasketActivity: BaseActivity(), BasketView {
 
     override fun addItem(position: Int) {
         adapter.notifyItemInserted(position)
+    }
+
+    override fun showProductInfo(product: Product) {
+        startActivity(Intent(this,ProductInfoActivity::class.java).apply {
+            putExtra(PRODUCT_TAG, product)
+        })
     }
 }

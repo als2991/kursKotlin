@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.util.Log
 import android.widget.EditText
+import android.widget.Toast
 import com.suvorov.suvorov_andrey_shop.*
 import com.suvorov.suvorov_andrey_shop.ui.CatalogActivity.Companion.PRODUCT_ID
 import com.suvorov.suvorov_andrey_shop.presenter.CheckOutPresenter
@@ -16,7 +17,6 @@ import moxy.ktx.moxyPresenter
 class CheckoutActivity : BaseActivity(), ProductsView {
 
     private val presenter by moxyPresenter { CheckOutPresenter()}
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,13 +32,9 @@ class CheckoutActivity : BaseActivity(), ProductsView {
         val productID = intent.extras?.getInt(PRODUCT_ID,-1)
         Log.d(tag,productID.toString())
 
-        //checkOutSumValue.text = presenter.calcAmountPrice().toString()
-        //checkOutSale.text = presenter.calcAmountDiscount().toString()
-        //checkOutTotalPriceWithSale.text = presenter.calcAmountDiscountPrice().toString()
-
-        //checkoutPay.setOnClickListener{
-        //    Toast.makeText(this, checkOutTotalPriceWithSale.text, Toast.LENGTH_LONG).show()
-        //}
+        checkoutPay.setOnClickListener{
+            Toast.makeText(this, checkOutTotalPriceWithSale.text, Toast.LENGTH_LONG).show()
+        }
     }
 
       private fun setListeners(editors: List<EditText>) {
@@ -75,7 +71,5 @@ class CheckoutActivity : BaseActivity(), ProductsView {
       }
 
     }
-
-
 
 }

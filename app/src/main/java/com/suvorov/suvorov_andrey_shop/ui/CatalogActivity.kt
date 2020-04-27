@@ -46,7 +46,6 @@ class CatalogActivity: BaseActivity(), CatalogView {
           categoryRv.layoutManager = LinearLayoutManager(this)
           categoryRv.adapter = adapter
 
-
     }
 
     override fun setCategories(list: List<String>) {

@@ -8,14 +8,7 @@ import moxy.MvpPresenter
 @InjectViewState
 class BasketPresenter: MvpPresenter<BasketView>() {
 
-
-    private val productPresenter = CheckOutPresenter()
-
-    val caseNokia8_1 = Product(
-        2290.00,
-        5,
-        "Case for Nokia 8.1"
-    )
+    val productsList = ProductPresenter().getProducts()
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
@@ -23,21 +16,34 @@ class BasketPresenter: MvpPresenter<BasketView>() {
     }
 
     fun SetData(){
-        val productsList = productPresenter.getProductList()
         viewState.setProducts(productsList)
     }
 
     fun removeItem(product: Product){
-        val productsList = productPresenter.getProductList()
         val position = productsList.indexOf(product)
         productsList.remove(product)
         viewState.removeItem(position)
     }
 
-    fun addItem(product: Product){
-        val productList = productPresenter.getProductList()
-        productList.add(product)
-        val position = productList.indexOf(product)
+    fun addItem(){
+        var newid: Int = 0
+        productsList.forEach { product ->
+            if(product.id > newid) newid = product.id
+        }
+        newid++
+        val product = Product(
+            id = newid,
+            productName = "Product$newid",
+            price = 1000.0 + 100.0 * newid,
+            discount = newid,
+            imageUrl = ""
+        )
+        productsList.add(product)
+        val position = productsList.indexOf(product)
         viewState.addItem(position)
+    }
+
+    fun onProductClick(product: Product){
+        viewState.showProductInfo(product)
     }
 }

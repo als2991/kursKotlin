@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.AboutProductActivity"></activity>
+
+        <activity android:name=".ui.ProductInfoActivity"></activity>
 
 
     </application>

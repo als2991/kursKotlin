@@ -15,4 +15,7 @@ interface BasketView:MvpView {
 
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun addItem(position: Int)
+
+    @StateStrategyType(AddToEndSingleStrategy::class)
+    fun showProductInfo(product: Product)
 }

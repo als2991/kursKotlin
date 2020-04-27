@@ -6,11 +6,26 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.suvorov.suvorov_andrey_shop.R
 import com.suvorov.suvorov_andrey_shop.domain.model.Product
-import kotlinx.android.synthetic.main.item_product.view.*
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.item_product.*
 
-class ProductAdapter(
-    private val onDeleteClick: (product: Product) -> Unit
-):RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+class BasketAdapter(
+    //private val onDeleteClick: (product: Product) -> Unit,
+    private val onProductClick: (Product) -> Unit
+):RecyclerView.Adapter<BasketAdapter.ViewHolder>() {
+
+    inner class ViewHolder(override val containerView: View): RecyclerView.ViewHolder(containerView), LayoutContainer{
+
+        fun bind(product: Product){
+            itemNameProduct.text = product.productName
+            itemDiscount.text = "${product.discount}%"
+            itemPrice.text = "${product.calcDiscountPrice()} Р"
+
+            //itemView.deleteIv.setOnClickListener { onDeleteClick(product) }
+            containerView.setOnClickListener { onProductClick(product) }
+        }
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(
@@ -30,13 +45,4 @@ class ProductAdapter(
        holder.bind(products[position])
     }
 
-    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        fun bind(product: Product){
-            itemView.itemNameProduct.text = product.productName
-            itemView.itemDiscount.text = product.discount.toString() + "%"
-            itemView.itemPrice.text = product.calcDiscountPrice().toString() + " Р"
-
-            itemView.deleteIv.setOnClickListener { onDeleteClick(product) }
-            }
-        }
 }
