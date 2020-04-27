@@ -21,6 +21,7 @@ class ProductInfoActivity: BaseActivity(), ProductInfoView {
 
         aboutProductBackImg.setOnClickListener{
             finish()
+        }
 
         val product = intent?.getParcelableExtra<Product>(PRODUCT_TAG) ?: return
         Glide
