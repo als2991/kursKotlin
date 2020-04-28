@@ -17,10 +17,11 @@ class BasketActivity: BaseActivity(), BasketView {
 
     private var isAuth: Boolean = false
     private val presenter by moxyPresenter { BasketPresenter() }
-    private val adapter = BasketAdapter { product ->
-        //presenter.removeItem(product)
-        presenter.onProductClick(product)
-    }
+    private val adapter = BasketAdapter (
+        { product -> presenter.removeItem(product)
+        },
+        {product -> presenter.onProductClick(product)
+        })
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,7 +50,7 @@ class BasketActivity: BaseActivity(), BasketView {
     }
 
     override fun setProducts(list: List<Product>) {
-        adapter.SetData(list)
+        adapter.setData(list)
     }
 
     override fun removeItem(position: Int) {

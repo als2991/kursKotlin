@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.suvorov.suvorov_andrey_shop.R
@@ -23,6 +22,8 @@ class CatalogActivity: BaseActivity(), CatalogView {
       private val adapter = CategoryAdapter { category ->
           presenter.removeItem(category)
       }
+
+    private val adapterLook = LookProductAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,10 +47,13 @@ class CatalogActivity: BaseActivity(), CatalogView {
           categoryRv.layoutManager = LinearLayoutManager(this)
           categoryRv.adapter = adapter
 
+          lookRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+          lookRv.adapter = adapterLook
+
     }
 
     override fun setCategories(list: List<String>) {
-       adapter.SetData(list)
+       adapter.setData(list)
     }
 
     override fun removeItem(position: Int) {
@@ -75,7 +79,8 @@ class CatalogActivity: BaseActivity(), CatalogView {
 
 
     override fun showProductIds(productIds: List<Long>) {
-        Toast.makeText(this,productIds.joinToString ( "," ), Toast.LENGTH_LONG).show()
+        adapterLook.setData(productIds)
+        //Toast.makeText(this,productIds.joinToString ( "," ), Toast.LENGTH_LONG).show()
     }
 
     //example replacements static java

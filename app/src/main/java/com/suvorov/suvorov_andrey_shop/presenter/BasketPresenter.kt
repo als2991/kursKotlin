@@ -12,10 +12,10 @@ class BasketPresenter: MvpPresenter<BasketView>() {
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        SetData()
+        setData()
     }
 
-    fun SetData(){
+    private fun setData(){
         viewState.setProducts(productsList)
     }
 

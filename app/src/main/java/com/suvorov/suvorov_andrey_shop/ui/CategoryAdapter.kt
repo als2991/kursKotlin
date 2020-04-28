@@ -21,7 +21,7 @@ class CategoryAdapter(
 
     private var categories : List<String> = listOf()
 
-    fun SetData(categories : List<String>){
+    fun setData(categories : List<String>){
         this.categories = categories
         notifyDataSetChanged()
     }

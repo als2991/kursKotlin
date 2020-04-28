@@ -8,10 +8,11 @@ import com.suvorov.suvorov_andrey_shop.R
 import com.suvorov.suvorov_andrey_shop.domain.model.Product
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_product.*
+import kotlinx.android.synthetic.main.item_product.view.*
 
 class BasketAdapter(
-    //private val onDeleteClick: (product: Product) -> Unit,
-    private val onProductClick: (Product) -> Unit
+    private val onDeleteClick: (product: Product) -> Unit,
+    private val onProductClick: (product: Product) -> Unit
 ):RecyclerView.Adapter<BasketAdapter.ViewHolder>() {
 
     inner class ViewHolder(override val containerView: View): RecyclerView.ViewHolder(containerView), LayoutContainer{
@@ -21,7 +22,7 @@ class BasketAdapter(
             itemDiscount.text = "${product.discount}%"
             itemPrice.text = "${product.calcDiscountPrice()} Р"
 
-            //itemView.deleteIv.setOnClickListener { onDeleteClick(product) }
+            itemView.deleteIv.setOnClickListener { onDeleteClick(product) }
             containerView.setOnClickListener { onProductClick(product) }
         }
     }
@@ -34,7 +35,7 @@ class BasketAdapter(
 
         private var products : List<Product> = listOf()
 
-    fun SetData(products: List<Product>){
+    fun setData(products: List<Product>){
         this.products = products
         notifyDataSetChanged()
     }
