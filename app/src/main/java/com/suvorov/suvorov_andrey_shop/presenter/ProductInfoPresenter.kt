@@ -7,7 +7,10 @@ import moxy.MvpPresenter
 
 class ProductInfoPresenter(private val viewedProductDao: ViewedProductDao): MvpPresenter<ProductInfoView>() {
     fun onProductShow(product: Product){
-        viewedProductDao.addProduct(product.id.toLong())
+        viewedProductDao.addProduct(
+            productId = product.id.toLong(),
+            productName = product.productName,
+            productPrice = "${product.price}")
 
     }
 }

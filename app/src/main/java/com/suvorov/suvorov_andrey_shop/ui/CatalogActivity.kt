@@ -78,8 +78,8 @@ class CatalogActivity: BaseActivity(), CatalogView {
     }
 
 
-    override fun showProductIds(productIds: List<Long>) {
-        adapterLook.setData(productIds)
+    override fun showProductIds(productIds: List<Long>, productNames: List<String>, productPrice: List<String>) {
+        adapterLook.setData(productIds, productNames, productPrice)
         //Toast.makeText(this,productIds.joinToString ( "," ), Toast.LENGTH_LONG).show()
     }
 

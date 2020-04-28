@@ -9,10 +9,14 @@ import kotlinx.android.synthetic.main.item_look_product_activity.view.*
 
 class LookProductAdapter: RecyclerView.Adapter<LookProductAdapter.ViewHolder>() {
 
-    private var lookProducts: List<Long> = listOf()
+    private var lookProductsId: List<Long> = listOf()
+    private var lookProductsName: List<String> = listOf()
+    private var lookProductsPrice: List<String> = listOf()
 
-    fun setData(lookProducts : List<Long>){
-        this.lookProducts = lookProducts
+    fun setData(lookProductsId : List<Long>, lookProductsName : List<String>, lookProductsPrice : List<String>){
+        this.lookProductsId = lookProductsId
+        this.lookProductsName = lookProductsName
+        this.lookProductsPrice = lookProductsPrice
         notifyDataSetChanged()
     }
 
@@ -21,16 +25,18 @@ class LookProductAdapter: RecyclerView.Adapter<LookProductAdapter.ViewHolder>() 
             LayoutInflater.from(parent.context).inflate(R.layout.item_look_product_activity, parent, false)
         )
 
-    override fun getItemCount(): Int = lookProducts.size
+    override fun getItemCount(): Int = lookProductsId.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(lookProducts[position])
+        holder.bind(lookProductsId[position],lookProductsName[position], lookProductsPrice[position])
 
     }
 
    class ViewHolder(private val containerView: View): RecyclerView.ViewHolder(containerView){
-        fun bind(id: Long){
+        fun bind(id: Long, name: String, price: String){
             containerView.itemId.text = "$id"
+            containerView.itemName.text = name
+            containerView.itemPrice.text = price
         }
     }
 

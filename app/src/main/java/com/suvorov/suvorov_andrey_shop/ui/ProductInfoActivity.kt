@@ -31,6 +31,7 @@ class ProductInfoActivity: BaseActivity(), ProductInfoView {
             .into(productInfoImage)
         productInfoName.text = product.productName
         productInfoPrice.text = product.price.toString()
+
         presenter.onProductShow(product)
     }
 

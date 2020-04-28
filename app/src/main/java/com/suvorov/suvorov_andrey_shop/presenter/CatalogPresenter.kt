@@ -28,8 +28,10 @@ class CatalogPresenter(
     //срабатывает когда View аттачится (например поворот экрана)
     override fun attachView(view: CatalogView?) {
         super.attachView(view)
-        val productIds = viewedProductDao.getAllProducts()
-        viewState.showProductIds(productIds)
+        val productIds = viewedProductDao.getAllProductsId()
+        val productNames = viewedProductDao.getAllProductsName()
+        val productPrices = viewedProductDao.getAllProductsPrice()
+        viewState.showProductIds(productIds, productNames, productPrices)
     }
 
     //срабатывает когда View первый раз аттачится (загрузка продуктов, установка данных итд)
