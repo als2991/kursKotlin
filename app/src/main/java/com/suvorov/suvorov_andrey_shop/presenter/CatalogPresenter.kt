@@ -1,14 +1,18 @@
 package com.suvorov.suvorov_andrey_shop.presenter
 
+import com.suvorov.suvorov_andrey_shop.domain.MainApi
 import com.suvorov.suvorov_andrey_shop.domain.ViewedProductDao
 import com.suvorov.suvorov_andrey_shop.ui.CatalogView
+import kotlinx.coroutines.*
 import moxy.InjectViewState
 import moxy.MvpPresenter
+import okhttp3.Dispatcher
 
 @InjectViewState
 class CatalogPresenter(
+    private val mainApi: MainApi,
     private val viewedProductDao: ViewedProductDao
-) : MvpPresenter<CatalogView>(){
+) : BasePresenter<CatalogView>(){
 
     //изменяемый лист
     private val list = mutableListOf(
@@ -34,10 +38,20 @@ class CatalogPresenter(
         viewState.showProductIds(productIds, productNames, productPrices)
     }
 
+
+
     //срабатывает когда View первый раз аттачится (загрузка продуктов, установка данных итд)
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
+
         setData()
+
+        launch{
+            val remoteProducts = mainApi.allProduct()
+            val productNames = remoteProducts.map { remoteProduct -> remoteProduct.name }
+            viewState.setCategories(productNames)
+        }
+
     }
 
     fun setData(){
