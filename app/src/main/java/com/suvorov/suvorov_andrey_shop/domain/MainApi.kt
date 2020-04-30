@@ -1,6 +1,7 @@
 package com.suvorov.suvorov_andrey_shop.domain
 
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface MainApi {
 
@@ -19,6 +20,6 @@ interface MainApi {
         )
     }
 
-    @GET("product/all/default")
-    suspend fun allProduct(): List<RemoteProduct>
+    @GET("product/all/{author}")
+    suspend fun allProduct(@Path("author") author: String): List<RemoteProduct>
 }

@@ -44,10 +44,10 @@ class CatalogPresenter(
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
 
-        setData()
+            //setData()
 
         launch{
-            val remoteProducts = mainApi.allProduct()
+            val remoteProducts = mainApi.allProduct(author = "default")
             val productNames = remoteProducts.map { remoteProduct -> remoteProduct.name }
             viewState.setCategories(productNames)
         }
