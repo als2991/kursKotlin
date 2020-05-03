@@ -1,17 +1,22 @@
 package com.suvorov.suvorov_andrey_shop.presenter
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
+import com.suvorov.suvorov_andrey_shop.R
 import com.suvorov.suvorov_andrey_shop.domain.MainApi
 import com.suvorov.suvorov_andrey_shop.domain.ViewedProductDao
 import com.suvorov.suvorov_andrey_shop.ui.CatalogView
 import kotlinx.coroutines.*
 import moxy.InjectViewState
-import moxy.MvpPresenter
-import okhttp3.Dispatcher
+import java.net.ConnectException
+import java.net.UnknownHostException
 
 @InjectViewState
 class CatalogPresenter(
     private val mainApi: MainApi,
-    private val viewedProductDao: ViewedProductDao
+    private val viewedProductDao: ViewedProductDao,
+    private val context: Context
 ) : BasePresenter<CatalogView>(){
 
     //изменяемый лист
@@ -39,12 +44,12 @@ class CatalogPresenter(
     }
 
 
-
     //срабатывает когда View первый раз аттачится (загрузка продуктов, установка данных итд)
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
 
-            //setData()
+        //setData()
+        hasConnection(context)
 
         launch{
             val remoteProducts = mainApi.allProduct(author = "default")
@@ -62,6 +67,22 @@ class CatalogPresenter(
         val position = list.indexOf(category)
         list.remove(category)
         viewState.removeItem(position)
+    }
+
+    //from SDK level < 29
+    private fun hasConnection(context: Context){
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
+        var result = false
+
+        if(activeNetwork != null) result = activeNetwork.isConnectedOrConnecting
+        if(!result) viewState.showError(context.getString(R.string.no_connect_internet))
+    }
+
+    override fun onFailure(e: Throwable) {
+        super.onFailure(e)
+         if (e is UnknownHostException || e is ConnectException)
+             viewState.showError(context.getString(R.string.no_connect_server))
     }
 
 }

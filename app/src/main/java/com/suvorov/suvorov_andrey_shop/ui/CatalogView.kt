@@ -16,4 +16,7 @@ interface CatalogView: MvpView {
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun showProductIds(productIds: List<Long>, productNames: List<String>, productPrice:List<String>)
+
+    @StateStrategyType(AddToEndSingleStrategy::class)
+    fun showError(text: String)
 }

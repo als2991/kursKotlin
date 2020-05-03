@@ -1,11 +1,15 @@
 package com.suvorov.suvorov_andrey_shop.ui
 
 import android.app.Activity
+import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.suvorov.suvorov_andrey_shop.R
@@ -21,14 +25,15 @@ class CatalogActivity: BaseActivity(), CatalogView {
 
       private val presenter by moxyPresenter {
           val retrofit = Retrofit.Builder()
-              .baseUrl("http://207.254.71.167:9191")
+              .baseUrl(getString(R.string.url_server))
               .addConverterFactory(GsonConverterFactory.create())
               .build()
           val service = retrofit.create(MainApi::class.java)
 
           CatalogPresenter(
               mainApi = service,
-              viewedProductDao = ViewedProductDaoImpl(sharedPreferences)
+              viewedProductDao = ViewedProductDaoImpl(sharedPreferences),
+              context = this
           )
       }
       private val adapter = CategoryAdapter { category ->
@@ -94,6 +99,11 @@ class CatalogActivity: BaseActivity(), CatalogView {
         adapterLook.setData(productIds, productNames, productPrice)
         //Toast.makeText(this,productIds.joinToString ( "," ), Toast.LENGTH_LONG).show()
     }
+
+    override fun showError(text: String) {
+        Toast.makeText(this, text,Toast.LENGTH_LONG).show()
+    }
+
 
     //example replacements static java
     companion object{

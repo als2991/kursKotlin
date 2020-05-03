@@ -20,4 +20,7 @@
     <string name="add_in_basket">Добавить в корзину</string>
     <string name="about_product_name">Наименование товара</string>
     <string name="discount_text">Скидка:</string>
+    <string name="url_server">http://207.254.71.167:9191</string>
+    <string name="no_connect_internet">Отсутствует подключение к интернету</string>
+    <string name="no_connect_server">Нет связи с сервером</string>
 </resources>
